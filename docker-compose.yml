@@ -1,8 +1,9 @@
-version: '3.8'
+version: '3.6'
 services:
     ngnix:
         container_name: dim-ngnix
         build:
+            context: .
             dockerfile: ./docker/ngnix/Dockerfile
         volumes:
             - ./:/var/www/html/
@@ -11,6 +12,7 @@ services:
     php:
         container_name: dim-php
         build:
+            context: .
             dockerfile: ./docker/php/Dockerfile
         volumes:
             - ./:/var/www/html/
@@ -18,7 +20,9 @@ services:
             - 9000
     mysql:
         container_name: dim-mysql
-        image: mysql/mysql-server:8.0
+        build:
+            context: .
+            dockerfile: ./docker/mysql/Dockerfile
         env_file: .env
         environment:
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
