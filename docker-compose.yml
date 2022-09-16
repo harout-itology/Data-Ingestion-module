@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+    ngnix:
+        container_name: dim-ngnix
+        build:
+            dockerfile: ./docker/ngnix/Dockerfile
+        volumes:
+            - ./:/var/www/html/
+        ports:
+            - "8080:80"
+    php:
+        container_name: dim-php
+        build:
+            dockerfile: ./docker/php/Dockerfile
+        volumes:
+            - ./:/var/www/html/
+        expose:
+            - 9000
+    mysql:
+        container_name: dim-mysql
+        image: mysql/mysql-server:8.0
+        env_file: .env
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - "3366:3306"
