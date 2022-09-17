@@ -28,3 +28,16 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Add user for laravel application
+RUN groupadd -g 1000 www
+RUN useradd -u 1000 -ms /bin/bash -g www www
+
+# Copy code to /var/www/html
+COPY --chown=www:www-data . /var/www/html
+
+# make the strorage writble
+RUN chmod -R 777 /var/www/html/storage
