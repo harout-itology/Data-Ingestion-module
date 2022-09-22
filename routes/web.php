@@ -25,6 +25,11 @@ Route::get('/oauth2/google', function () {
 });
 
 Route::get('/oauth2/callback', function () {
-    $user = Socialite::driver('google')->user();
-    return response()->json($user->token);
+    try{
+        $user = Socialite::driver('google')->user();
+        return response()->json($user->token);
+    }
+    catch(\Exception $e){
+        return redirect('/oauth2/google');
+    }
 });

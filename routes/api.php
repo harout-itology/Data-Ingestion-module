@@ -3,7 +3,8 @@
 use App\Http\Controllers\YouTubeVideoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ReportTypeController;
+use App\Http\Controllers\YouTubeReportTypeController;
+use App\Http\Controllers\YouTubeJobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/youtube/{id}', [YouTubeVideoController::class, 'show'])->name('youtube.show');
+Route::get('/youtube/video/{id}', [YouTubeVideoController::class, 'show']);
 
-Route::get('/reporttype/', [ReportTypeController::class, 'index'])->name('youtube.index');
+Route::get('/youtube/reporttype', [YouTubeReportTypeController::class, 'index']);
 
+Route::resource('/youtube/job',YouTubeJobController::class);
