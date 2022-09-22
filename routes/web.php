@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/oauth2/google', function () {
+    return Socialite::driver('google')
+        ->scopes(config('youtube.scopes'))
+        ->redirect();
+});
+
+Route::get('/oauth2/callback', function () {
+    $user = Socialite::driver('google')->user();
+    return response()->json($user->token);
 });

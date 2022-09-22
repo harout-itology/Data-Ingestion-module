@@ -3,6 +3,7 @@
 use App\Http\Controllers\YouTubeVideoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReportTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/youtube/{id}', [YouTubeVideoController::class, 'show'])->name('youtube.show');
+
+Route::get('/reporttype/', [ReportTypeController::class, 'index'])->name('youtube.index');
+
