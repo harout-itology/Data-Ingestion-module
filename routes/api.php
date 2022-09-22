@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\YouTubeVideoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\YouTubeReportTypeController;
+use App\Http\Controllers\YouTubeJobController;
+use App\Http\Controllers\YouTubeVideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/test', [TestController::class, 'index']);
 
-Route::get('/youtube/{id}', [YouTubeVideoController::class, 'show'])->name('youtube.show');
+Route::get('/youtube/video/{id}', [YouTubeVideoController::class, 'show']);
+
+Route::get('/youtube/reporttype', [YouTubeReportTypeController::class, 'index']);
+
+Route::resource('/youtube/job',YouTubeJobController::class);
+

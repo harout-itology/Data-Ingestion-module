@@ -10,5 +10,12 @@
 */
 
 return [
-    'key' => env('YOUTUBE_API_KEY')
+    'id' => env('YOUTUBE_CLIENT_ID'),
+    'secret' => env('YOUTUBE_CLIENT_SECRET'),
+    'key' => env('YOUTUBE_API_KEY'),
+    'redirect' => env('YOUTUBE_REDIRECT_URL'),
+    'token' => env('YOUTUBE_TOKEN'),
+    'scopes' => [
+        'https://www.googleapis.com/auth/yt-analytics-monetary.readonly'
+    ]
 ];
