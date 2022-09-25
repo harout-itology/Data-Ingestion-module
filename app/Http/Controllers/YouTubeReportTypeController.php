@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\YouTubeService;
+use App\Services\YouTubeReportingService;
 
 class YouTubeReportTypeController extends Controller
 {
-    public function index(YouTubeService $youTubeService)
+    public function index(YouTubeReportingService $youTubeService)
     {
         return response()->json($youTubeService->getReportTypes()->reportTypes);
     }
