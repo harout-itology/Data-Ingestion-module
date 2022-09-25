@@ -6,6 +6,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\YouTubeReportTypeController;
 use App\Http\Controllers\YouTubeJobController;
 use App\Http\Controllers\YouTubeVideoController;
+use App\Http\Controllers\YouTubeGroupController;
+use App\Http\Controllers\YouTubeQueryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +30,8 @@ Route::get('/youtube/video/{id}', [YouTubeVideoController::class, 'show']);
 
 Route::get('/youtube/reporttype', [YouTubeReportTypeController::class, 'index']);
 
+Route::get('/youtube/query', [YouTubeQueryController::class, 'query']);
+
 Route::resource('/youtube/job',YouTubeJobController::class);
 
+Route::resource('/youtube/group',YouTubeGroupController::class);

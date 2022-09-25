@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\YouTubeService;
+use App\Services\YouTubeReportingService;
 use Google\Service\Exception;
 
 class YouTubeJobController extends Controller
 {
-    public function __construct(public YouTubeService $youTubeService)
+    public function __construct(public YouTubeReportingService $youTubeService)
     {
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class YouTubeService
+class YouTubeReportingService
 {
     public \Google_Service_YouTubeReporting $youtubeReporting;
 
@@ -31,6 +31,4 @@ class YouTubeService
 
         return $this->youtubeReporting->jobs->create($reportingJob);
     }
-
-
 }
